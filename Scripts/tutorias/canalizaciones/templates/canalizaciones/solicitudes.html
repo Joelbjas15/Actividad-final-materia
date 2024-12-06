@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Solicitudes</title>
+
+    <!-- Estilos CSS personalizados -->
+    <style>
+        /* Reset básico */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #faf3e0; /* Fondo crema */
+            color: #2e2e2e; /* Texto oscuro */
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            background-color: #ffffff; /* Fondo blanco */
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #d89216; /* Naranja brillante */
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        /* Estilo de la tabla */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            padding: 14px 20px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f4f4f4; /* Fondo gris claro */
+            color: #2e2e2e; /* Texto oscuro */
+            font-size: 16px;
+            text-transform: uppercase;
+        }
+
+        td {
+            color: #4e4e4e; /* Texto gris intermedio */
+        }
+
+        tr:nth-child(even) {
+            background-color: #fafafa; /* Alterna filas con gris claro */
+        }
+
+        tr:hover {
+            background-color: #f0f0f0; /* Fondo gris más claro al pasar el mouse */
+        }
+
+        /* Botones */
+        .btn {
+            background-color: #d89216; /* Naranja brillante */
+            color: #ffffff; /* Texto blanco */
+            padding: 12px 25px;
+            font-size: 14px;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #bf7310; /* Naranja más oscuro */
+        }
+
+        .btn-register {
+            background-color: #6ec1e4; /* Azul claro */
+            color: #ffffff; /* Texto blanco */
+            padding: 12px 25px;
+            font-size: 14px;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-register:hover {
+            background-color: #5ca8c8; /* Azul más oscuro */
+        }
+
+        /* Mensaje de "No hay solicitudes" */
+        .empty-message {
+            text-align: center;
+            font-size: 18px;
+            color: #6b6b6b; /* Texto gris claro */
+            padding: 20px;
+        }
+
+        /* Responsividad */
+        @media (max-width: 768px) {
+            th, td {
+                padding: 10px 15px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            table {
+                font-size: 14px;
+            }
+
+            .btn, .btn-register {
+                font-size: 12px;
+                padding: 10px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Canalizaciones</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Alumno</th>
+                    <th>Tipo</th>
+                    <th>Descripción</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for solicitud in solicitudes %}
+                    <tr>
+                        <td>{{ solicitud.id }}</td>
+                        <td>{{ solicitud.alumno }}</td>
+                        <td>{{ solicitud.tipo_canalizacion }}</td>
+                        <td>{{ solicitud.descripcion }}</td>
+                        <td>{{ solicitud.fecha_creacion }}</td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="5" class="empty-message">No hay solicitudes registradas</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Botones para crear nueva solicitud y registrar alumno -->
+        <a href="{% url 'crear_solicitud' %}" class="btn">Nueva Canalizacion</a>
+        <a href="{% url 'registrar_alumno' %}" class="btn-register">Registrar Alumno</a>
+    </div>
+
+</body>
+</html>

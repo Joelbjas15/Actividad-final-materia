@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Nuevo Alumno</title>
+</head>
+<body>
+
+<div class="container">
+    <h2>Registrar Nuevo Alumno</h2>
+    
+    <form method="POST" class="form-container">
+        {% csrf_token %}
+
+        <div class="form-group">
+            {{ form.as_p }}
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn">Registrar Alumno</button>
+            <a href="{% url 'listar_alumnos' %}" class="btn-secondary">Ver lista de alumnos</a>
+        </div>
+    </form>
+</div>
+
+<div class="footer-text">
+    <p>¿Tienes dudas? <a href="#">Contáctanos</a></p>
+</div>
+
+<!-- Estilos CSS -->
+<style>
+    /* Reset básico */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #faf3e0; /* Fondo color crema */
+        color: #2e2e2e;
+        line-height: 1.5;
+        padding: 20px;
+    }
+
+    /* Contenedor principal */
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background: #ffffff;
+        border-radius: 12px;
+        padding: 30px 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+        font-size: 24px;
+        color: #d89216; /* Naranja brillante */
+        text-align: center;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    /* Contenedor del formulario */
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .form-group {
+        width: 100%;
+    }
+
+    .form-group label {
+        display: block;
+        font-size: 14px;
+        font-weight: bold;
+        color: #4e4e4e;
+        margin-bottom: 5px;
+    }
+
+    .form-group input,
+    .form-group select {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background: #f9f9f9;
+        color: #333;
+        transition: all 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+        border-color: #d89216;
+        background: #fff;
+        outline: none;
+    }
+
+    /* Botón principal */
+    .btn {
+        background: #d89216;
+        color: white;
+        font-size: 16px;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+        background: #bf7310;
+    }
+
+    /* Botón secundario */
+    .btn-secondary {
+        background: #f4f4f4;
+        color: #2e2e2e;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        text-align: center;
+        font-size: 14px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+        background: #eaeaea;
+    }
+
+    /* Footer */
+    .footer-text {
+        font-size: 12px;
+        color: #6b6b6b;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .footer-text a {
+        color: #d89216;
+        text-decoration: none;
+    }
+
+    .footer-text a:hover {
+        text-decoration: underline;
+    }
+
+    /* Responsividad */
+    @media (max-width: 768px) {
+        .container {
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 20px;
+        }
+    }
+</style>
+
+</body>
+</html>
